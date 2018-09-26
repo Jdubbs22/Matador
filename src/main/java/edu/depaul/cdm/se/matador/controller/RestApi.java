@@ -9,10 +9,8 @@ public class RestApi {
 
     @GetMapping("/member")
     public HttpEntity<?> getOneMember() {
-        Member member = new Member();
-        member.setAge(32);
-        member.setName("John Doe");
 
-        return new ResponseEntity<>(member, HttpStatus.OK);
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }

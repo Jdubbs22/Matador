@@ -18,14 +18,14 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Session implements Serializable{
-    @ManyToOne
+   // @ManyToOne
     private Instructor instructor;
-    @ManyToOne
+ //   @ManyToOne
     private Member member;
     
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+ //   @Id
+  //  @GeneratedValue(strategy = GenerationType.AUTO)
     private long activId;
     private long memberId;
     private long InstrId;

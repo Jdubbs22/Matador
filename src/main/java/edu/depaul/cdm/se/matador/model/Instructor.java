@@ -15,10 +15,10 @@ import javax.persistence.Id;
  *  using JPA format (from book)
  * @author durfm
  */
-@Entity
+//@Entity
 public class Instructor implements Serializable{
-    @Id    
-    @GeneratedValue(strategy = GenerationType.AUTO)
+  //  @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private long instrId;
     private String instrName;
     
