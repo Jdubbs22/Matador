@@ -9,5 +9,5 @@ public interface MemberRepository extends JpaRepository <Member, Long> {
 
     List<Member> findAll();
 
-    Member findById(Long id);
+    Member findOneById(Long id);
 }
