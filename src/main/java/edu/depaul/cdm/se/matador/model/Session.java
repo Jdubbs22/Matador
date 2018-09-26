@@ -21,7 +21,7 @@ public class Session implements Serializable{
     @ManyToOne
     private Instructor instructor;
     @ManyToOne
-    private Members members;
+    private Member member;
     
     
     @Id
@@ -39,12 +39,12 @@ public class Session implements Serializable{
         this.instructor = instructor;
     }
 
-    public Members getMembers() {
-        return members;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMembers(Members members) {
-        this.members = members;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public long getActivId() {
