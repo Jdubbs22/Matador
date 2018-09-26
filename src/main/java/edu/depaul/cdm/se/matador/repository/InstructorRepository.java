@@ -10,10 +10,11 @@ package edu.depaul.cdm.se.matador.repository;
  * @author durfm
  */
 
+import edu.depaul.cdm.se.matador.model.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IinstructorRepository extends JpaRepository<Instructor, Long> {
+public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
 }//end interface
