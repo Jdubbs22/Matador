@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.depaul.cdm.se.matador.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,8 @@ public class Member implements Serializable{
     private String email;
     private String phoneNumber;
     private String username;
+
+    @JsonIgnore
     private String password;
 
     public Member() {
