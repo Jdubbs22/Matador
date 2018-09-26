@@ -31,7 +31,7 @@ public class Member implements Serializable{
     public Member() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
