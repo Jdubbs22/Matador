@@ -6,17 +6,12 @@
 package edu.depaul.cdm.se.matador.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
  * @author durfm
  */
-@Entity
+//@Entity
 public class Session implements Serializable{
    // @ManyToOne
     private Instructor instructor;
