@@ -29,6 +29,9 @@ public class Session implements Serializable{
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
-    
 
+
+//    @ManyToOne
+//    @JoinColumn(name = "instructor_id", unique = false)
+//    private Instructor instructor;
 }//end class

@@ -20,18 +20,20 @@ public class MemberServiceImpl implements MemberService {
     public Member create(Member member) {
         if (member == null) {
             throw new IllegalArgumentException("member must not be null");
-        }
+        }//end if
         if(member.getId() != null) {
             Member m = this.memberRepo.findOneById(member.getId());
             if (m != null) {
                 throw new IllegalStateException("The member already existed in database");
-            } else {
+            }//end internal if
+            else {
                 return this.memberRepo.save(member);
-            }
-        } else {
+            }//end else
+        }//end if
+        else {
             return this.memberRepo.save(member);
-        }
-    }
+        }//end else
+    }//end create
 
     @Override
     public Member readById(Long id) {

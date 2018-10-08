@@ -10,32 +10,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import lombok.Data;
 /**
  *  using JPA format (from book)
  * @author durfm
  */
-//@Entity
+@Data
+@Entity
 public class Instructor implements Serializable{
-  //  @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long instrId;
     private String instrName;
     
-    public long getInstrId(){
-       return instrId; 
-    }//end getter
-    
-    public void setInstrId(){
-        this.instrId = instrId;
-    }//end setter
-    
-    public String getInstrName(){
-        return instrName;
-    }//end getter
-    
-    public void setInstrName(){
-        this.instrName = instrName;
-    }//end setter
-    
+
 }//end class
