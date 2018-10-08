@@ -5,74 +5,30 @@
  */
 package edu.depaul.cdm.se.matador.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  *
  * @author durfm
  */
-//@Entity
+
+
+@Data
+@Entity
 public class Session implements Serializable{
-   // @ManyToOne
-    private Instructor instructor;
- //   @ManyToOne
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String description;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
     
-    
- //   @Id
-  //  @GeneratedValue(strategy = GenerationType.AUTO)
-    private long activId;
-    private long memberId;
-    private long InstrId;
-    private String dateTime;
 
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-    public long getActivId() {
-        return activId;
-    }
-
-    public void setActivId(long activId) {
-        this.activId = activId;
-    }
-
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
-    }
-
-    public long getInstrId() {
-        return InstrId;
-    }
-
-    public void setInstrId(long InstrId) {
-        this.InstrId = InstrId;
-    }
-
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-    
-    
 }//end class

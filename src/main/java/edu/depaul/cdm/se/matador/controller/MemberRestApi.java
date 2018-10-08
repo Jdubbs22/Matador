@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.repository.MemberRepository;
 import java.util.List;
+
+import edu.depaul.cdm.se.matador.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -18,27 +20,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class RestApi {
+public class MemberRestApi {
+
+
+
 
     @Autowired
-    private MemberRepository memberRepository;
+    private MemberService memberService;
 
     @GetMapping("/members")
     public HttpEntity<?> getAllMembers() {
 
-        List<Member> memberList = this.memberRepository.findAll();
+        List<Member> memberList = this.memberService.getAll();
 
         return new ResponseEntity<>(memberList, HttpStatus.OK);
     }
 
     @PostMapping("/members")
     public HttpEntity<?> createMembers(@RequestBody Member member) {
-
-        this.memberRepository.save(member);
-
-        ObjectNode node = JsonNodeFactory.instance.objectNode();
-        node.put("message", "new member was saved");
-        return new ResponseEntity<>(node, HttpStatus.OK);
+        Member member1 = this.memberService.create(member);
+        return new ResponseEntity<>(member, HttpStatus.OK);
     }
 
     @PutMapping("/members")
