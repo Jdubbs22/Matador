@@ -25,13 +25,16 @@ public class Session implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String description;
+   //private Long memberId;
+  //  private Long instructorId;
+    private String date_time;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "instructor_id", unique = false)
-//    private Instructor instructor;
+   @ManyToOne
+   @JoinColumn(name = "instructor_id", unique = false)
+   private Instructor instructor;
 }//end class

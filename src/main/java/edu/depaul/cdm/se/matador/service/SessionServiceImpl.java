@@ -15,7 +15,7 @@ public class SessionServiceImpl implements  SessionService {
     @Override
     public Session create(Session session) {
         if (session == null) {
-            throw new IllegalArgumentException("Session must not be null")
+            throw new IllegalArgumentException("Session must not be null");
         }//end if
         if (session.getId() != null) {
             Session s = this.sessionRepo.findOneById(session.getId());
@@ -45,4 +45,5 @@ public class SessionServiceImpl implements  SessionService {
     public Boolean delete(Session session) {
         return null;
     }
-}
+}//end class
+

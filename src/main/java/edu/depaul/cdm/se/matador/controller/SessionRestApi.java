@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.model.Session;
+import edu.depaul.cdm.se.matador.repository.InstructorRepository;
 import edu.depaul.cdm.se.matador.repository.MemberRepository;
 import edu.depaul.cdm.se.matador.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class SessionRestApi {
 
     @Autowired
     private MemberRepository memberRepo;
+
+    @Autowired
+    private InstructorRepository instrRepo;
 
     @GetMapping("")
     public HttpEntity<?> getAll() {
