@@ -55,9 +55,8 @@ public class SessionRestApi {
 
     }//end httpentity
 
-    @GetMapping("/deleteMember")  // is this correct...can I just set member to null???
-    public HttpEntity<?> deleteMember(@RequestParam("sessionId") Long sessionId,
-                                      @RequestParam("memberId") Long memberId){
+    @GetMapping("/deleteMember")
+    public HttpEntity<?> deleteMember(@RequestParam("sessionId") Long sessionId) {
         Session session = this.sessionRepo.findOneById(sessionId);
         Member member = null;
         session.setMember(member);
