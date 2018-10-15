@@ -5,6 +5,8 @@ import edu.depaul.cdm.se.matador.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SessionServiceImpl implements  SessionService {
     private SessionRepository sessionRepo;
@@ -45,5 +47,12 @@ public class SessionServiceImpl implements  SessionService {
     public Boolean delete(Session session) {
         return null;
     }
+
+    @Override
+    public List<Session> getAll() {
+        return sessionRepo.findAll();
+    }
+
+
 }//end class
 

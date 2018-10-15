@@ -2,6 +2,8 @@ package edu.depaul.cdm.se.matador.service;
 
 import edu.depaul.cdm.se.matador.model.Session;
 
+import java.util.List;
+
 public interface SessionService {
 
     Session create(Session session);
@@ -11,4 +13,8 @@ public interface SessionService {
     Boolean update(Session session);
 
     Boolean delete(Session session);
+
+    public List<Session> getAll();
+
+
 }
