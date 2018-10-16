@@ -32,7 +32,9 @@ public class MemberRestApi {
     public HttpEntity<?> getAllMembers() {
 
         List<Member> memberList = this.memberService.getAll();
-
+        for (Member member: memberList) {
+            member.setSessions(null);
+        }
         return new ResponseEntity<>(memberList, HttpStatus.OK);
     }
 

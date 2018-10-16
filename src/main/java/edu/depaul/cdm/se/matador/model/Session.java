@@ -5,6 +5,7 @@
  */
 package edu.depaul.cdm.se.matador.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

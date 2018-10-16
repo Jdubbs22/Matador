@@ -5,6 +5,8 @@
  */
 package edu.depaul.cdm.se.matador.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,6 +20,7 @@ import javax.persistence.*;
 @Data
 @Entity
 //@Inheritance(strategy = InheritanceType.JOINED)  // not sure if this is needed ask to clarify when used
+
 public class Member implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +33,15 @@ public class Member implements Serializable{
     @JsonIgnore
     private String password;
 
+//    @JsonIgnore
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id",referencedColumnName = "id")
     private List<Session> sessions;
 
+    @JsonIgnore
+    public List<Session> getSessions() {
+        return this.sessions;
+    }
     public Member() {
     }
 
