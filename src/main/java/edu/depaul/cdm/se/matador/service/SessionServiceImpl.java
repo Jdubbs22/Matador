@@ -35,7 +35,12 @@ public class SessionServiceImpl implements  SessionService {
 
     @Override
     public Session readById(Long id) {
-        return null;
+        if (id == null) {
+            throw new IllegalArgumentException("Id must not be null");
+        }//end if
+
+
+        return  this.sessionRepo.findOneById(id);
     }
 
     @Override
@@ -50,6 +55,11 @@ public class SessionServiceImpl implements  SessionService {
 
     @Override
     public List<Session> getAll() {
+        return sessionRepo.findAll();
+    }
+
+    @Override
+    public List<Session> findByMemberId(Long id) {
         return sessionRepo.findAll();
     }
 

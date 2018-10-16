@@ -1,6 +1,7 @@
 package edu.depaul.cdm.se.matador.service;
 
 import edu.depaul.cdm.se.matador.model.Session;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -16,5 +17,6 @@ public interface SessionService {
 
     public List<Session> getAll();
 
-
+    @Query("select id,date_time,instructor_id from session where member_id = ?1")
+    List<Session> findByMemberId(Long id);
 }
