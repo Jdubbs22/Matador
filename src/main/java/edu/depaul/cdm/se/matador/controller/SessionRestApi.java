@@ -42,23 +42,18 @@ public class SessionRestApi {
         return new ResponseEntity<>(this.sessionRepo.save(session), HttpStatus.OK);
     }
 
+
+
+
     @GetMapping("/memberSession")
   //  public HttpEntity<?> findByInventoryIdIn(List<Long> sessionList){
       //  List<Session> sessionList = this.sessionService.getAll();
-        public HttpEntity<?> findBymemberId(Long memberId){
+        public HttpEntity<?> findBymemberId(@RequestParam("memberId") Long memberId){
 
 
-      //  List<Session> sessionList = this.sessionService.getAll();
-
-     //   @Query ("select * from session where member_id =  :mem")
-     //   List<Session> memSession(Long memberId);
-
-
-      //  @Query( "select o from MyObject o where inventoryId in :ids" )
-     //   List<MyObject> findByInventoryIds(@Param("ids") List<Long> inventoryIdList);
-
-      //  return new ResponseEntity<>(sessionList, HttpStatus.OK);
-        return null;
+        List<Session> sessionList = this.sessionService.findByMemberId(memberId);
+        return new ResponseEntity<>(sessionList, HttpStatus.OK);
+       // return null;
     }
 
 
