@@ -5,3 +5,5 @@ mvnw.cmd
 
 
 .idea/
+
+/src/main/resources/application-vtran.properties
