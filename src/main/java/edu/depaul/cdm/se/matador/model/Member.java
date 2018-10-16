@@ -33,7 +33,7 @@ public class Member implements Serializable{
     @JsonIgnore
     private String password;
 
-//    @JsonIgnore
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id",referencedColumnName = "id")
     private List<Session> sessions;
