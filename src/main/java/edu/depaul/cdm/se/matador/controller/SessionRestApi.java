@@ -42,10 +42,21 @@ public class SessionRestApi {
         return new ResponseEntity<>(this.sessionRepo.save(session), HttpStatus.OK);
     }
 
+    @GetMapping("/sessions")
+    public HttpEntity<?> getAllSessions() {
+
+        List<Session> sessionList = this.sessionService.getAll();
+        return new ResponseEntity<>(sessionList, HttpStatus.OK);
+    }
+
+    @GetMapping("/instructorSession")
+       public  HttpEntity<?> findByInstructorId(){
+        List<Session> sessionList=this.sessionService.findByInstructorId();
+        return new ResponseEntity<>(sessionList,HttpStatus.OK);
+    }
 
 
-
-    @GetMapping("/memberSession")
+    @GetMapping("/memberSession")  // this is not working...why?
   //  public HttpEntity<?> findByInventoryIdIn(List<Long> sessionList){
       //  List<Session> sessionList = this.sessionService.getAll();
         public HttpEntity<?> findBymemberId(@RequestParam("memberId") Long memberId){

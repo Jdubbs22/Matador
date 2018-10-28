@@ -7,6 +7,9 @@
 	<artifactId>matador</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+    <!--
+    <packaging>war</packaging>
+    -->
 
 	<name>matador</name>
 	<description>Demo project for Spring Boot</description>
@@ -49,7 +52,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<!--  probably use angularJs instead of this...more in demand
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+        -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

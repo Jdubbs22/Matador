@@ -63,6 +63,11 @@ public class SessionServiceImpl implements  SessionService {
         return sessionRepo.findAll();
     }
 
+    @Override
+    public List<Session> findByInstructorId() {
+        return sessionRepo.findAll();
+    }
+
 
 }//end class
 

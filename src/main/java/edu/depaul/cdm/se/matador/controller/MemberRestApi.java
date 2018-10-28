@@ -32,9 +32,6 @@ public class MemberRestApi {
     public HttpEntity<?> getAllMembers() {
 
         List<Member> memberList = this.memberService.getAll();
-        for (Member member: memberList) {
-            member.setSessions(null);
-        }
         return new ResponseEntity<>(memberList, HttpStatus.OK);
     }
 
@@ -50,6 +47,14 @@ public class MemberRestApi {
 
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
+    /*  not sure if this is correct???
+    @PutMapping("/members")
+    public HttpEntity<?> updateMembers(@RequestBody Member member) {
+          Member member1 = this.memberService.update(member);
+        return new ResponseEntity<>(member, HttpStatus.OK);
+    }
+     */
 
     @DeleteMapping("/members")
     public HttpEntity<?> deleteMembers() {

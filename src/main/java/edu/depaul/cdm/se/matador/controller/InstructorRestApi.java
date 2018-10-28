@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/instructor")
+@RequestMapping("/instructors")
 public class InstructorRestApi {
 
     @Autowired
     private InstructorRepository instrRepo;
+
 
 
 

@@ -12,6 +12,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  *
@@ -29,7 +30,8 @@ public class Session implements Serializable{
    //private Long memberId;
   //  private Long instructorId;
     private String date_time;
-
+//    private Instant startingTime;
+//    private Instant endingTime;
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
