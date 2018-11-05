@@ -68,6 +68,9 @@ public class SessionServiceImpl implements  SessionService {
         return sessionRepo.findAll();
     }
 
-
+    @Override
+    public List<Session> findOpenSession(Long instructorId) {
+        return this.sessionRepo.findOpenSessions(instructorId);
+    }
 }//end class
 

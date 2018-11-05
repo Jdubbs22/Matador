@@ -6,10 +6,9 @@
 package edu.depaul.cdm.se.matador.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+import javax.persistence.*;
+
 import lombok.Data;
 /**
  *  using JPA format (from book)
@@ -22,6 +21,10 @@ public class Instructor implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long instrId;
     private String instrName;
-    
-
+    private String imageUrl;
+    private String description;
+  /*  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "instr_id",referencedColumnName = "instr_id")
+    private List<Session> sessions;
+*/
 }//end class

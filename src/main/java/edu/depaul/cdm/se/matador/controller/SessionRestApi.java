@@ -67,6 +67,10 @@ public class SessionRestApi {
        // return null;
     }
 
+    @GetMapping("/openSession")
+    public HttpEntity<?> getOpenSession(@RequestParam("instructId") Long instructorId){
+        return new ResponseEntity<>(this.sessionService.findOpenSession(instructorId), HttpStatus.OK);
+    }
 
 
     /**
@@ -88,7 +92,7 @@ public class SessionRestApi {
 
     }//end httpentity
 
-    @GetMapping("/deleteMember")
+    @PutMapping("/deleteMember")
     public HttpEntity<?> deleteMember(@RequestParam("sessionId") Long sessionId) {
         Session session = this.sessionRepo.findOneById(sessionId);
         Member member = null;

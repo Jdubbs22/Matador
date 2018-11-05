@@ -22,4 +22,6 @@ public interface SessionService {
 
     @Query("select id,date_time from session where instrId = 30")
     List<Session> findByInstructorId();  //Long id if not hard coded like above
+
+    List<Session> findOpenSession(Long instructorId);
 }
