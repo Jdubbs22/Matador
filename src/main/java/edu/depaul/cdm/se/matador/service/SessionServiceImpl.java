@@ -60,7 +60,7 @@ public class SessionServiceImpl implements  SessionService {
 
     @Override
     public List<Session> findByMemberId(Long id) {
-        return sessionRepo.findAll();
+        return sessionRepo.findByMemberId(id);
     }
 
     @Override

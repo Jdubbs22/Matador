@@ -22,6 +22,7 @@ public class Instructor implements Serializable{
     private long instrId;
     private String instrName;
     private String imageUrl;
+    @Column(columnDefinition = "TEXT")
     private String description;
   /*  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "instr_id",referencedColumnName = "instr_id")

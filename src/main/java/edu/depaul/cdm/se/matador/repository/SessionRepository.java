@@ -14,4 +14,7 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
   //  List<Session> findByInstructor();
     @Query("select s from Session s where s.instructor.instrId = :instructId and s.member = null")
     List<Session> findOpenSessions(@Param("instructId") Long instrId);
+
+    @Query("select s from Session s where s.member.id = :memberId")
+    List<Session> findByMemberId(@Param("memberId")Long memberId);
 }

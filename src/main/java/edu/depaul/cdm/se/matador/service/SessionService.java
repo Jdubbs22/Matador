@@ -17,7 +17,7 @@ public interface SessionService {
 
     public List<Session> getAll();
 
-    @Query("select id,date_time,instructor_id from session where member_id = ?1")
+
     List<Session> findByMemberId(Long id);
 
     @Query("select id,date_time from session where instrId = 30")
