@@ -18,3 +18,4 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     @Query("select s from Session s where s.member.id = :memberId")
     List<Session> findByMemberId(@Param("memberId")Long memberId);
 }
+//test line
