@@ -31,6 +31,13 @@ public class InstructorRestApi {
         Instructor instructor = this.instrRepo.findInstructorByInstrId(id);
         return  new ResponseEntity<>(instructor, HttpStatus.OK);
     }
+/*
+The usage of HttpEntity is an alternative to using the two parameter:
+@RequestHeader HttpHeaders and @RequestBody String/backing type
 
+HttpEntity can be used to return response as well. The additional advantage in this case,
+when comparing with @ResponseBody is, it can include the headers in the response as well.
+from: https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/http-entity.html
+ */
 
 }//end class
