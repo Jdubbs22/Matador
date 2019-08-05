@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.matador.repository;
+package edu.depaul.cdm.se.matador.dao.repository;
 
 import edu.depaul.cdm.se.matador.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

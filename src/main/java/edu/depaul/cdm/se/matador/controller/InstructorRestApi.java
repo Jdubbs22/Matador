@@ -1,7 +1,7 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
-import edu.depaul.cdm.se.matador.repository.InstructorRepository;
+import edu.depaul.cdm.se.matador.dao.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
