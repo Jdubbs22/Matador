@@ -24,13 +24,13 @@ public class InstructorRestApi {
     public HttpEntity<?> getInstructors() {
         List<Instructor> instructorList = this.instrRepo.findAll();
         return  new ResponseEntity<>(instructorList, HttpStatus.OK);
-    }
+    }//end method
 
     @GetMapping("/{id}")
     public HttpEntity<?> getInstructor(@PathVariable("id") Long id) {
         Instructor instructor = this.instrRepo.findInstructorByInstrId(id);
         return  new ResponseEntity<>(instructor, HttpStatus.OK);
-    }
+    }//end method
 
 
 }//end class

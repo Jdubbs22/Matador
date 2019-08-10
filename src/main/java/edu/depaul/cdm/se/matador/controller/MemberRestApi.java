@@ -33,20 +33,20 @@ public class MemberRestApi {
 
         List<Member> memberList = this.memberService.getAll();
         return new ResponseEntity<>(memberList, HttpStatus.OK);
-    }
+    }//end method
 
     @PostMapping("/members")
     public HttpEntity<?> createMembers(@RequestBody Member member) {
         Member member1 = this.memberService.create(member);
         return new ResponseEntity<>(member, HttpStatus.OK);
-    }
+    }//end method
 
     @PutMapping("/members")
     public HttpEntity<?> updateMembers() {
 
 
         return new ResponseEntity<>(null, HttpStatus.OK);
-    }
+    }//end method
 
     /*  not sure if this is correct???
     @PutMapping("/members")
@@ -61,5 +61,5 @@ public class MemberRestApi {
 
 
         return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-}
+    }//end method
+}//end class
