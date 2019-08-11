@@ -3,7 +3,7 @@
 mvnw
 mvnw.cmd
 
-
+.zip
 .idea/
 
 /src/main/resources/application-vtran.properties

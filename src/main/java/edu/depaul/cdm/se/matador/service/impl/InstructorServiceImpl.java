@@ -1,10 +1,11 @@
-package edu.depaul.cdm.se.matador.service;
+package edu.depaul.cdm.se.matador.service.impl;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
-import edu.depaul.cdm.se.matador.repository.InstructorRepository;
+import edu.depaul.cdm.se.matador.dao.repository.InstructorRepository;
+import edu.depaul.cdm.se.matador.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class InstructorServiceImpl implements  InstructorService {
+public class InstructorServiceImpl implements InstructorService {
 
     private InstructorRepository instrRepo;
     @Autowired

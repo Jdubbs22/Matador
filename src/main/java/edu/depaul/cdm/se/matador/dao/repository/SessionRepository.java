@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.matador.repository;
+package edu.depaul.cdm.se.matador.dao.repository;
 
 import edu.depaul.cdm.se.matador.model.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,3 +18,4 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     @Query("select s from Session s where s.member.id = :memberId")
     List<Session> findByMemberId(@Param("memberId")Long memberId);
 }
+//test line

@@ -1,7 +1,7 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
-import edu.depaul.cdm.se.matador.repository.InstructorRepository;
+import edu.depaul.cdm.se.matador.dao.repository.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,19 @@ public class InstructorRestApi {
     public HttpEntity<?> getInstructor(@PathVariable("id") Long id) {
         Instructor instructor = this.instrRepo.findInstructorByInstrId(id);
         return  new ResponseEntity<>(instructor, HttpStatus.OK);
+<<<<<<< HEAD
     }//end method
 
+=======
+    }
+/*
+The usage of HttpEntity is an alternative to using the two parameter:
+@RequestHeader HttpHeaders and @RequestBody String/backing type
+
+HttpEntity can be used to return response as well. The additional advantage in this case,
+when comparing with @ResponseBody is, it can include the headers in the response as well.
+from: https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/http-entity.html
+ */
+>>>>>>> 50899101515fbbe49e14012c3886c038c970e1d9
 
 }//end class

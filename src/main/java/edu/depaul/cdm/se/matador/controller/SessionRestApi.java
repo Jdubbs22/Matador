@@ -2,20 +2,17 @@ package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.model.Session;
-import edu.depaul.cdm.se.matador.repository.InstructorRepository;
-import edu.depaul.cdm.se.matador.repository.MemberRepository;
-import edu.depaul.cdm.se.matador.repository.SessionRepository;
+import edu.depaul.cdm.se.matador.dao.repository.InstructorRepository;
+import edu.depaul.cdm.se.matador.dao.repository.MemberRepository;
+import edu.depaul.cdm.se.matador.dao.repository.SessionRepository;
 import edu.depaul.cdm.se.matador.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/sessions")

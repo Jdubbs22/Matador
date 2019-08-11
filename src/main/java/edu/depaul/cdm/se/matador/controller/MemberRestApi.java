@@ -1,9 +1,7 @@
 package edu.depaul.cdm.se.matador.controller;
 
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.repository.MemberRepository;
+
 import java.util.List;
 
 import edu.depaul.cdm.se.matador.service.MemberService;
@@ -53,7 +51,7 @@ public class MemberRestApi {
     public HttpEntity<?> updateMembers(@RequestBody Member member) {
           Member member1 = this.memberService.update(member);
         return new ResponseEntity<>(member, HttpStatus.OK);
-    }
+    }//end method
      */
 
     @DeleteMapping("/members")

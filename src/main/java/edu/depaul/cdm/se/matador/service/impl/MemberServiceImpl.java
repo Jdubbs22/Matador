@@ -1,11 +1,11 @@
-package edu.depaul.cdm.se.matador.service;
+package edu.depaul.cdm.se.matador.service.impl;
 
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.repository.MemberRepository;
+import edu.depaul.cdm.se.matador.dao.repository.MemberRepository;
+import edu.depaul.cdm.se.matador.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
 import java.util.List;
 
 @Service
