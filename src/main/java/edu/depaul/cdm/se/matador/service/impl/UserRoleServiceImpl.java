@@ -25,7 +25,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     @Override
     public User addRole(Long userId, String roleName) {
-//        addRole(1L, "SUPER_ROLE");
+//        addRole(1L, "SUPER_ROLE");   //this cannot exist for exmp.
 //        this.roleRepo.findById("SUPER_ROLE");
         Optional<Role> roleOption = this.roleRepo.findById(roleName);
         Optional<User> userOption = this.userRepo.findById(userId);
