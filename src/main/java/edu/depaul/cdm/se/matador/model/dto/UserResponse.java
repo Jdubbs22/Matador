@@ -17,9 +17,10 @@ public class UserResponse {
     private String lastName;
     private String phoneNumber;
 
-    private Set<Role> roles;
+    private Set<Role> roles;  //was role instead of string
 
     public UserResponse() {}
+
     public UserResponse(User user) {
         this.id = user.getId();
         this.email = user.getEmail();
@@ -27,6 +28,7 @@ public class UserResponse {
         this.lastName = user.getLastName();
         this.phoneNumber= user.getPhoneNumber();
         this.roles = user.getRoles();
+                //Collections.singleton(String.valueOf(user.getRoles()));
     }
 
 
