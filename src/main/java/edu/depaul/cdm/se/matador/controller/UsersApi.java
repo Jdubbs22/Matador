@@ -42,7 +42,7 @@ public class UsersApi {
          return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping("/users/{userId}")  //this is in userRoleApi...is this needed twice?
     public ResponseEntity<User> userRole(@RequestBody RoleRequest request,@PathVariable("userId") Long id){
         return null;
     }
