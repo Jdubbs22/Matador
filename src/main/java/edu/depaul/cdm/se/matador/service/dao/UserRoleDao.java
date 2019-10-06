@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.Query;
 
 @Component
@@ -16,6 +17,8 @@ public class UserRoleDao {
     public int addRole(Long userId, String role) {
         String value = String.format("(%s, '%s')",userId, role);
         Query query = this.manager.createNativeQuery("insert into user_role(user_id, role) values " + value);
+        query.setFlushMode(FlushModeType.COMMIT);
+        // TODO: how to force this transaction to commit before returning 
         return query.executeUpdate();
     }
 }

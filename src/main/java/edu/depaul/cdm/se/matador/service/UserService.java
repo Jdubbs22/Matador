@@ -4,6 +4,8 @@ import edu.depaul.cdm.se.matador.model.User;
 
 import java.util.Optional;
 
+// TODO change to MemberService
+// all functions  names must change
 public interface UserService {
     /**
      * Create new User

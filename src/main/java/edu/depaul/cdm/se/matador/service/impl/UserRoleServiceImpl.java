@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+// TODO: change to MemberRoleServiceImpl
 @Service
 public class UserRoleServiceImpl implements UserRoleService {
 
@@ -24,13 +25,15 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
+
     public User addRole(Long userId, String roleName) {
 //        addRole(1L, "SUPER_ROLE");   //this cannot exist for exmp.
 //        this.roleRepo.findById("SUPER_ROLE");
+        // TODO: accept role 'admin' as 'ADMIN'
         Optional<Role> roleOption = this.roleRepo.findById(roleName);
         Optional<User> userOption = this.userRepo.findById(userId);
         if (roleOption.isPresent() && userOption.isPresent()) {
-            this.userRoleDao.addRole(userId, roleName);
+            int updated = this.userRoleDao.addRole(userId, roleName);
             return this.userRepo.findById(userId).get();
         }
 

@@ -10,6 +10,8 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter
+// TODO: change User to Member to avoid resved word
+// in sql
 public class User {
 
 // For Jpa

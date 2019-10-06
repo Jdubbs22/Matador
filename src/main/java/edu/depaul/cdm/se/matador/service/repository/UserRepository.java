@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
+// TODO:  change to MemberRepository
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Override

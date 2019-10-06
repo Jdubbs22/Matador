@@ -1,7 +1,6 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.User;
-import edu.depaul.cdm.se.matador.model.dto.RoleRequest;
 import edu.depaul.cdm.se.matador.model.dto.UserResponse;
 import edu.depaul.cdm.se.matador.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -44,8 +43,8 @@ public class UsersApi {
          return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/users/{userId}")  //this is in userRoleApi...is this needed twice?
-    public ResponseEntity<User> userRole(@RequestBody RoleRequest request,@PathVariable("userId") Long id){
-        return null;
-    }
+//    @PutMapping("/users/role/{userId}")  //this is in userRoleApi...is this needed twice?
+//    public ResponseEntity<User> userRole(@RequestBody RoleRequest request,@PathVariable("userId") Long id){
+//        return null;
+//    }
 }

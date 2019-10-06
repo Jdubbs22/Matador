@@ -2,6 +2,7 @@ package edu.depaul.cdm.se.matador.service;
 
 import edu.depaul.cdm.se.matador.model.User;
 
+// TODO: change MemberRoleService
 public interface UserRoleService {
     /**
      * Add roleName to userId
