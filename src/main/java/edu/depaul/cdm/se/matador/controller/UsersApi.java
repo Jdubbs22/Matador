@@ -31,11 +31,13 @@ public class UsersApi {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<User> createUser(@PathVariable("userId") Long userId) {
+    public ResponseEntity<UserResponse> createUser(@PathVariable("userId") Long userId) {
 
         Optional<User> userOption = this.userService.findUserById(userId);
         if (userOption.isPresent()) {
-            return ResponseEntity.ok(userOption.get());
+            User user =  userOption.get();
+            UserResponse response = new UserResponse(user);
+            return ResponseEntity.ok(response);
            // return new ResponseEntity<User>(userOption.get(), HttpStatus.OK);
         }
        // return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
