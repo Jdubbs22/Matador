@@ -1,39 +1,39 @@
 package edu.depaul.cdm.se.matador.service.impl;
 
 import edu.depaul.cdm.se.matador.model.Role;
-import edu.depaul.cdm.se.matador.model.User;
-import edu.depaul.cdm.se.matador.service.UserRoleService;
-import edu.depaul.cdm.se.matador.service.dao.UserRoleDao;
+import edu.depaul.cdm.se.matador.model.Member;
+import edu.depaul.cdm.se.matador.service.MemberRoleService;
+import edu.depaul.cdm.se.matador.service.dao.MemberRoleDao;
 import edu.depaul.cdm.se.matador.service.repository.RoleRepo;
-import edu.depaul.cdm.se.matador.service.repository.UserRepository;
+import edu.depaul.cdm.se.matador.service.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 // TODO: change to MemberRoleServiceImpl
 @Service
-public class UserRoleServiceImpl implements UserRoleService {
+public class MemberRoleServiceImpl implements MemberRoleService {
 
-    private UserRoleDao userRoleDao;
+    private MemberRoleDao memberRoleDao;
     private RoleRepo roleRepo;
-    private UserRepository userRepo;
+    private MemberRepository userRepo;
 
-    public UserRoleServiceImpl(UserRoleDao userRoleDao, RoleRepo roleRepo, UserRepository userRepo) {
-        this.userRoleDao = userRoleDao;
+    public MemberRoleServiceImpl(MemberRoleDao memberRoleDao, RoleRepo roleRepo, MemberRepository userRepo) {
+        this.memberRoleDao = memberRoleDao;
         this.roleRepo = roleRepo;
         this.userRepo = userRepo;
     }
 
     @Override
 
-    public User addRole(Long userId, String roleName) {
+    public Member addRole(Long userId, String roleName) {
 //        addRole(1L, "SUPER_ROLE");   //this cannot exist for exmp.
 //        this.roleRepo.findById("SUPER_ROLE");
         // TODO: accept role 'admin' as 'ADMIN'
         Optional<Role> roleOption = this.roleRepo.findById(roleName);
-        Optional<User> userOption = this.userRepo.findById(userId);
+        Optional<Member> userOption = this.userRepo.findById(userId);
         if (roleOption.isPresent() && userOption.isPresent()) {
-            int updated = this.userRoleDao.addRole(userId, roleName);
+            int updated = this.memberRoleDao.addRole(userId, roleName);
             return this.userRepo.findById(userId).get();
         }
 

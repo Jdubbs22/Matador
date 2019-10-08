@@ -9,7 +9,7 @@ import javax.persistence.FlushModeType;
 import javax.persistence.Query;
 
 @Component
-public class UserRoleDao {
+public class MemberRoleDao {
     @Autowired
     private EntityManager manager;
 

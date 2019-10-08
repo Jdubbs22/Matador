@@ -24,7 +24,7 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles", cascade = CascadeType.DETACH,
     fetch = FetchType.LAZY)
-    private List<User> users;
+    private List<Member> members;
 
     @Override
     public boolean equals(Object o) {

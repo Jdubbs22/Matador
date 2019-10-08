@@ -30,7 +30,7 @@ public class Instructor implements Serializable{
 
     // TODO: OneToOne with Member
     @OneToOne(fetch = FetchType.EAGER)
-    private User user;
+    private Member member;
 
   /*  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "instr_id",referencedColumnName = "instr_id")

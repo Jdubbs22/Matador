@@ -1,8 +1,8 @@
 package edu.depaul.cdm.se.matador.controller;
 
-import edu.depaul.cdm.se.matador.model.User;
-import edu.depaul.cdm.se.matador.model.dto.UserResponse;
-import edu.depaul.cdm.se.matador.service.UserService;
+import edu.depaul.cdm.se.matador.model.Member;
+import edu.depaul.cdm.se.matador.model.dto.MemberResponse;
+import edu.depaul.cdm.se.matador.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,18 +11,18 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1")
-public class UsersApi {
+public class MemberApi {
 
-    private UserService userService;
+    private MemberService memberService;
 
-    public UsersApi(UserService userService) {
-        this.userService = userService;
+    public MemberApi(MemberService memberService) {
+        this.memberService = memberService;
     }
 
     @PostMapping("/users")
-    public ResponseEntity<UserResponse> createUser(@RequestBody User user) {
-        User cratedUser = this.userService.create(user);
-        UserResponse response = new UserResponse(user);
+    public ResponseEntity<MemberResponse> createUser(@RequestBody Member member) {
+        Member cratedMember = this.memberService.create(member);
+        MemberResponse response = new MemberResponse(member);
 
          // convert User --> UserResponse
         //also tried cratedUser.toString()
@@ -30,12 +30,12 @@ public class UsersApi {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<UserResponse> createUser(@PathVariable("userId") Long userId) {
+    public ResponseEntity<MemberResponse> createUser(@PathVariable("userId") Long userId) {
 
-        Optional<User> userOption = this.userService.findUserById(userId);
+        Optional<Member> userOption = this.memberService.findUserById(userId);
         if (userOption.isPresent()) {
-            User user =  userOption.get();
-            UserResponse response = new UserResponse(user);
+            Member member =  userOption.get();
+            MemberResponse response = new MemberResponse(member);
             return ResponseEntity.ok(response);
            // return new ResponseEntity<User>(userOption.get(), HttpStatus.OK);
         }

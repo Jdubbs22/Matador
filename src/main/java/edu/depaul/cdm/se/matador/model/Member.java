@@ -12,10 +12,10 @@ import java.util.Set;
 @Getter @Setter
 // TODO: change User to Member to avoid resved word
 // in sql
-public class User {
+public class Member {
 
 // For Jpa
-    public User() {
+    public Member() {
     }
 
     @Id

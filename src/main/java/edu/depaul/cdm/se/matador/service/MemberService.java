@@ -1,23 +1,23 @@
 package edu.depaul.cdm.se.matador.service;
 
-import edu.depaul.cdm.se.matador.model.User;
+import edu.depaul.cdm.se.matador.model.Member;
 
 import java.util.Optional;
 
 // TODO change to MemberService
 // all functions  names must change
-public interface UserService {
+public interface MemberService {
     /**
      * Create new User
-     * @param user
+     * @param member
      * @return newly created user
      */
-    User create(User user);
+    Member create(Member member);
 
     /**
      * find the user by userId
      * @param id
      * @return found user
      */
-    Optional<User> findUserById(Long id);
+    Optional<Member> findUserById(Long id);
 }
