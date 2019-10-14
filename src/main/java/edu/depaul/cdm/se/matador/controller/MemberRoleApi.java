@@ -22,28 +22,29 @@ public class MemberRoleApi {
     @PutMapping("/userRole/{userId}")
     public ResponseEntity<MemberResponse> addRole(@PathVariable("userId") Long userId,
                                                   @RequestBody RoleRequest request) {
+        System.out.println("test string");
+
         Member member = this.memberRoleService.addRole(userId, request.getRole());
-        // TODO: what if user does exist?
-        // TODO: what if user is null?
-        // TODO: What if the role is illegal? Role doesn't exist
+
         // TODO: what if the same role is entered twice?
 
-        try{
-            if(userId ==-1){
-                new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "NO ID Given");
-            }//end if  ...this doens't work
-        MemberResponse memberResponse = new MemberResponse(member);
-        //HttpStatus.NOT_FOUND;
-        return new ResponseEntity<>(memberResponse, HttpStatus.ACCEPTED);}
-        catch (Exception e){
+//        try{
+        if (member != null) {
+            MemberResponse memberResponse = new MemberResponse(member);
+            //HttpStatus.NOT_FOUND;
+            return new ResponseEntity<>(memberResponse, HttpStatus.ACCEPTED);
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "NO user for Id: " + userId);
+            // return ResponseEntity.notFound().build();
+        }
 
-                throw new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Improper Role or User ID", e);
-        }//end catch
-
-
+//        catch (Exception e){
+//
+//                throw new ResponseStatusException(
+//                        HttpStatus.NOT_FOUND, "Improper Role or User ID", e);
+//        }//end catch
 //        UserResponse userResponse = new UserResponse(user);
 //        return new ResponseEntity<>(userResponse, HttpStatus.ACCEPTED);
-    }
+    }//end add role
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-
+// TODO: change to memberrepo
     private MemberRepository userRepo;
 
     public MemberServiceImpl(MemberRepository userRepo) {

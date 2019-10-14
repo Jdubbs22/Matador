@@ -23,13 +23,16 @@ public class Instructor implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long instructorId;
-    private String instrName;
+   // private String name;
     private String imageUrl;
     @Column(columnDefinition = "TEXT")
     private String description;
 
     // TODO: OneToOne with Member
     @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(
+            name = "memberId", unique = true, nullable = false, updatable = false
+    )
     private Member member;
 
   /*  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
