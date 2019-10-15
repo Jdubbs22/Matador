@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 /**
  *  using JPA format (from book)
  * @author durfm
@@ -34,6 +35,7 @@ public class Instructor implements Serializable{
             name = "memberId", unique = true, nullable = false, updatable = false
     )
     private Member member;
+
 
   /*  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "instr_id",referencedColumnName = "instr_id")

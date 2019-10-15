@@ -1,5 +1,6 @@
 package edu.depaul.cdm.se.matador.service.impl;
 
+import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.service.MemberRoleService;
@@ -19,11 +20,14 @@ public class MemberRoleServiceImpl implements MemberRoleService {
     private MemberRoleDao memberRoleDao;
     private RoleRepo roleRepo;
     private MemberRepository userRepo;
+    private InstructorServiceImpl instrServ;
 
-    public MemberRoleServiceImpl(MemberRoleDao memberRoleDao, RoleRepo roleRepo, MemberRepository userRepo) {
+    public MemberRoleServiceImpl(MemberRoleDao memberRoleDao, RoleRepo roleRepo,
+                                 MemberRepository userRepo, InstructorServiceImpl instrServ) {
         this.memberRoleDao = memberRoleDao;
         this.roleRepo = roleRepo;
         this.userRepo = userRepo;
+        this.instrServ = instrServ;
     }
 
     @Override
@@ -31,7 +35,7 @@ public class MemberRoleServiceImpl implements MemberRoleService {
     public Member addRole(Long userId, String roleName) {
 //        addRole(1L, "SUPER_ROLE");   //this cannot exist for exmp.
 //        this.roleRepo.findById("SUPER_ROLE");
-        // TODO: accept role 'admin' as 'ADMIN'
+
         Optional<Role> roleOption = this.roleRepo.findById(roleName);
         if (!roleOption.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -50,6 +54,8 @@ public class MemberRoleServiceImpl implements MemberRoleService {
 
             // update role
             int updated = this.memberRoleDao.addRole(userId, roleName);
+            Instructor instr = new Instructor();  //is this right??
+            instrServ.create(instr);  //is this right??
             return this.userRepo.findById(userId).get();
         }
 

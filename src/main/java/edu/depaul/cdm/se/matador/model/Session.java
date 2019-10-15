@@ -29,7 +29,9 @@ public class Session implements Serializable{
     private Long id;
    //private Long memberId;
   //  private Long instructorId;
-    private Date date_time;
+    private Date start_date_time;
+    private Date end_date_time;
+    private String location;
 //    private Instant startingTime;
 //    private Instant endingTime;
     @ManyToOne

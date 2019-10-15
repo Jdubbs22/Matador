@@ -12,11 +12,11 @@ import java.util.Set;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-// TODO: change to memberrepo
-    private MemberRepository userRepo;
 
-    public MemberServiceImpl(MemberRepository userRepo) {
-        this.userRepo = userRepo;
+    private MemberRepository memberRepo;
+
+    public MemberServiceImpl(MemberRepository memberRepo) {
+        this.memberRepo = memberRepo;
     }
 
     @Override
@@ -28,11 +28,11 @@ public class MemberServiceImpl implements MemberService {
 
         roles.add(role);
         member.setRoles(roles);
-        return this.userRepo.save(member);
+        return this.memberRepo.save(member);
     }
 
     @Override
     public Optional<Member> findUserById(Long id) {
-        return this.userRepo.findById(id);
+        return this.memberRepo.findById(id);
     }
 }

@@ -6,6 +6,7 @@ import edu.depaul.cdm.se.matador.service.repository.InstructorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class InstructorServiceImpl implements InstructorService {
 
@@ -17,5 +18,12 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public List<Instructor> getAll() {
         return this.instrRepo.findAll();
+    }
+
+
+   // @Override
+    public Instructor create(Instructor instruct) {
+
+        return this.instrRepo.save(instruct);
     }
 }
