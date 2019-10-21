@@ -30,12 +30,18 @@ public class InstructorApi {
 
     @GetMapping("/instructors")
     public ResponseEntity<List<InstructorResponse>> getAllInstructors( ) {
-        //TODO: fix same Json problem with get all
-     //   List<Instructor> list = this.instructorSv.getAll();
 
         List<Instructor> list = this.instructorSv.getAll();
         List<InstructorResponse> responseList = new ArrayList<>(list.size());
         // copy each element from list to responseList
+        for (Instructor i:list) {
+           InstructorResponse response = new InstructorResponse();
+           response.setName(i.getMember().getFirstName()+" "+i.getMember().getLastName());
+           response.setImageUrl(i.getImageUrl());
+           response.setInstructorId(i.getInstructorId());
+           response.setStartDate(i.getStartDate());
+           responseList.add(response);
+        }
 
         return new ResponseEntity(responseList, HttpStatus.OK);
     }
