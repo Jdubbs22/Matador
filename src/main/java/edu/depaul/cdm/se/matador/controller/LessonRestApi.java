@@ -1,39 +1,44 @@
-//package edu.depaul.cdm.se.matador.controller;
-//
-//import edu.depaul.cdm.se.matador.model.Member;
-//import edu.depaul.cdm.se.matador.model.Session;
-//import edu.depaul.cdm.se.matador.service.repository.InstructorRepository;
-//import edu.depaul.cdm.se.matador.service.repository.MemberRepository;
-//import edu.depaul.cdm.se.matador.service.repository.SessionRepository;
-//import edu.depaul.cdm.se.matador.service.SessionService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpEntity;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@RestController
-//@RequestMapping("/sessions")
-//public class SessionRestApi {
-//    @Autowired
-//    private SessionService sessionService;
-//
-//    @Autowired
-//    private SessionRepository sessionRepo;
-//
-//    @Autowired
-//    private MemberRepository memberRepo;
-//
-//    @Autowired
-//    private InstructorRepository instrRepo;
-//
-//    @GetMapping("")
-//    public HttpEntity<?> getAll() {
-//        return new ResponseEntity<>(this.sessionRepo.findAll(), HttpStatus.OK);
-//    }
-//
+package edu.depaul.cdm.se.matador.controller;
+
+import edu.depaul.cdm.se.matador.model.Lesson;
+import edu.depaul.cdm.se.matador.service.LessonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@RestController
+@RequestMapping("/v1")
+public class LessonRestApi {
+
+
+
+    // TODO: create lesson service, inject here
+    @Autowired
+    private LessonService lessonService;
+
+
+    @GetMapping("/lessons")
+    public ResponseEntity<List<Lesson>> getAll(@RequestParam("instructorId") Long instructorId) {
+        List<Lesson> lessons = this.lessonService.findByInstructorId(instructorId);
+
+        List<Lesson> response = lessons.stream()
+                .map(lesson -> {
+                    //lesson.setInstructor(null);
+                    return lesson;
+                })
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(lessons, HttpStatus.OK);
+
+    }
+
 //    @PostMapping("")
 //    public HttpEntity<?> createSession(@RequestBody Session session) {
 //        return new ResponseEntity<>(this.sessionRepo.save(session), HttpStatus.OK);
@@ -98,5 +103,5 @@
 //        return new ResponseEntity<>(this.sessionRepo.save(session), HttpStatus.OK);
 //
 //    }//end httpEnt
-//
-//}//end class
+
+}//end class

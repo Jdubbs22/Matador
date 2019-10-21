@@ -1,12 +1,12 @@
 package edu.depaul.cdm.se.matador.service.impl;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
-import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.model.Member;
+import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.service.MemberRoleService;
 import edu.depaul.cdm.se.matador.service.dao.MemberRoleDao;
-import edu.depaul.cdm.se.matador.service.repository.RoleRepo;
 import edu.depaul.cdm.se.matador.service.repository.MemberRepository;
+import edu.depaul.cdm.se.matador.service.repository.RoleRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -42,20 +42,18 @@ public class MemberRoleServiceImpl implements MemberRoleService {
                 String.format("The role %s doesn't exist", roleName));
         }
 
-        Optional<Member> userOption = this.userRepo.findById(userId);
-        if (roleOption.isPresent() && userOption.isPresent()) {
+        Optional<Member> memberOption = this.userRepo.findById(userId);
+        if (roleOption.isPresent() && memberOption.isPresent()) {
 
             // Here we add role to member
             // TODO: If role is instructor and the member is not instructor yet
-            // then create instructor object.
-            // Link/Correlate that instructor object with Member
-            // Save instructor into database
-
-
+            // Create instructor from current member
+          if("INSTRUCTOR".equalsIgnoreCase(roleName)) {
+                Instructor instructor = instrServ.create(memberOption.get());
+            }
             // update role
             int updated = this.memberRoleDao.addRole(userId, roleName);
-            Instructor instr = new Instructor();  //is this right??
-            instrServ.create(instr);  //is this right??
+
             return this.userRepo.findById(userId).get();
         }
 

@@ -20,7 +20,15 @@ public class MemberRoleDao {
         query.setFlushMode(FlushModeType.COMMIT);
         // TODO: how to force this transaction to commit before returning 
         return query.executeUpdate();
+//        if(role== "INSTRUCTOR"){  //this doesn't work, just trying stuff to understand
+//
+//            Query query2 = this.manager.createNativeQuery("insert into instructor(instructor_id, member_id) value(1, 1)");
+//
+//            query.setFlushMode(FlushModeType.COMMIT);
+//        }
     }
+
+
 }
 
 /*

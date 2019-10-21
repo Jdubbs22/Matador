@@ -12,6 +12,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  *
@@ -22,24 +23,33 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Session implements Serializable{
+public class Lesson implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
    //private Long memberId;
   //  private Long instructorId;
-    private Date start_date_time;
-    private Date end_date_time;
-    private String location;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false, updatable = true)
+    private Date startTime;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false, updatable = true)
+    private Date endTime;
+    private String status; //change to enum
+
+    //private String location;
 //    private Instant startingTime;
 //    private Instant endingTime;
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "member_id")
-    private Member member;
+    private Set<Member> members;
 
 
-   @ManyToOne
-   @JoinColumn(name = "instructor_id", unique = false)
+
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "instructor_id")
    private Instructor instructor;
 }//end class

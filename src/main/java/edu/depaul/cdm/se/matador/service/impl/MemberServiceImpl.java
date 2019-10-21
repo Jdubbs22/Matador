@@ -1,8 +1,9 @@
 package edu.depaul.cdm.se.matador.service.impl;
 
-import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.model.Member;
+import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.service.MemberService;
+import edu.depaul.cdm.se.matador.service.repository.InstructorRepository;
 import edu.depaul.cdm.se.matador.service.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.Set;
 public class MemberServiceImpl implements MemberService {
 
     private MemberRepository memberRepo;
-
+    private InstructorRepository instrRepo;
     public MemberServiceImpl(MemberRepository memberRepo) {
         this.memberRepo = memberRepo;
     }
@@ -35,4 +36,9 @@ public class MemberServiceImpl implements MemberService {
     public Optional<Member> findUserById(Long id) {
         return this.memberRepo.findById(id);
     }
+
+
+
+
+
 }

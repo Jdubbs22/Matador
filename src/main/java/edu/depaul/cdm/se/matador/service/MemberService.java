@@ -4,7 +4,7 @@ import edu.depaul.cdm.se.matador.model.Member;
 
 import java.util.Optional;
 
-// TODO change to MemberService
+
 // all functions  names must change
 public interface MemberService {
     /**

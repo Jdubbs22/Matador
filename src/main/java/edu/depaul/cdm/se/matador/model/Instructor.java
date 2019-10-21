@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *  using JPA format (from book)
@@ -22,15 +23,19 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Instructor implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long instructorId;
+    private Long instructorId;
+    private Date startDate;
    // private String name;
     private String imageUrl;
+//    private  String first_name;
+//    private String last_name;
+
+
     @Column(columnDefinition = "TEXT")
     private String description;
 
     // TODO: OneToOne with Member
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(
             name = "memberId", unique = true, nullable = false, updatable = false
     )

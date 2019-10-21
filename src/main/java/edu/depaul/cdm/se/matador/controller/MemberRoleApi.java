@@ -1,8 +1,8 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.model.dto.RoleRequest;
 import edu.depaul.cdm.se.matador.model.dto.MemberResponse;
+import edu.depaul.cdm.se.matador.model.dto.RoleRequest;
 import edu.depaul.cdm.se.matador.service.MemberRoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +38,8 @@ public class MemberRoleApi {
                     HttpStatus.BAD_REQUEST, "NO user for Id: " + userId);
             // return ResponseEntity.notFound().build();
         }
+
+
 
 //        catch (Exception e){
 //
