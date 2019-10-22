@@ -39,6 +39,8 @@ public class Lesson implements Serializable{
     @Column(nullable = false, updatable = true)
     private Date endTime;
     private String status; //change to enum
+    //todo: how to impliment enum below?
+ //   private LessonStatus lessonStatus;
 
     //private String location;
 //    private Instant startingTime;

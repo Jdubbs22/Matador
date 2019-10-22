@@ -10,4 +10,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Override
     Optional<Member> findById(Long aLong);
+
+//    @Override
+//    Optional<Lesson> findAllLessons(Long id);
 }
