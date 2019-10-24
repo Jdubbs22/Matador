@@ -4,6 +4,7 @@ public enum LessonStatus {
 
     AVAILABLE,
     CLOSED,
+    FINISHED,
     CANCELLED;
 
 }

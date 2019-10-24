@@ -1,5 +1,6 @@
-package edu.depaul.cdm.se.matador.model.dto;
+package edu.depaul.cdm.se.matador.model.client;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Lesson;
 
@@ -10,11 +11,14 @@ import java.util.Set;
 public class LessonResponse {
 
     private  Long id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss")
     private Date startTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss")
     private Date endTime;
     private String lessonStatus;
     private Set<String> members;
     private Instructor instructor;
+    private String description;
 
     public LessonResponse(){}
 
@@ -24,7 +28,7 @@ public class LessonResponse {
         this.startTime = lesson.getStartTime();
         this.endTime = lesson.getEndTime();
         this.members = new HashSet<>();
-
+        this.description = lesson.getDescription();
     }
 
 }

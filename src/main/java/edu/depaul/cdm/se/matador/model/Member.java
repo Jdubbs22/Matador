@@ -28,8 +28,8 @@ public class Member {
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "USER_ID", nullable = false),
+            name = "member_role",
+            joinColumns = @JoinColumn(name = "MEMBER_ID", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "ROLE", nullable = false)
     )
     private Set<Role> roles = new HashSet<>();

@@ -1,6 +1,9 @@
 package edu.depaul.cdm.se.matador.service.impl;
 
+import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Lesson;
+import edu.depaul.cdm.se.matador.model.client.LessonRequest;
+import edu.depaul.cdm.se.matador.service.InstructorService;
 import edu.depaul.cdm.se.matador.service.LessonService;
 import edu.depaul.cdm.se.matador.service.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,8 @@ import java.util.Optional;
 public class LessonServiceImpl implements LessonService {
     @Autowired
     LessonRepository lessonRepository;
-
+    @Autowired
+    InstructorService instructorService;
     @Override
     public List<Lesson> findByInstructorId(Long instructorId) {
        List<Lesson> lessons= lessonRepository.findByInstructorId(instructorId);
@@ -30,6 +34,24 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public Optional<Lesson> OptfindByMemberId(Long memberId) {
         return Optional.empty();
+    }
+
+    //todo: fix createLesson
+    // TODO: verify that startTime and endTime in lessonRequest is legal
+    @Override
+    public Lesson create(Long memberId, LessonRequest request) {
+        // find Instructor with memberId,
+      Optional<Instructor> instr = instructorService.findInstructorById(memberId);
+        //  then create Lesson with given info from lessonRequest
+        Lesson lesson = new Lesson();
+        lesson.setInstructor(instr.get());
+        lesson.setDescription(request.getDescription());
+        lesson.setStartTime(request.getStartTime());
+        lesson.setEndTime(request.getEndTime());
+        lesson.setStatus("OPEN");
+        // persist into DB -> go via LessonRepository
+        return lessonRepository.save(lesson);
+
     }
 
 //    @Override

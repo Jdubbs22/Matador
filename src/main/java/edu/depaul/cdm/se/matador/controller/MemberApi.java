@@ -1,7 +1,7 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.model.dto.MemberResponse;
+import edu.depaul.cdm.se.matador.model.client.MemberResponse;
 import edu.depaul.cdm.se.matador.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

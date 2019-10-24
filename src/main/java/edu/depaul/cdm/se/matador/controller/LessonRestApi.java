@@ -1,7 +1,8 @@
 package edu.depaul.cdm.se.matador.controller;
 
 import edu.depaul.cdm.se.matador.model.Lesson;
-import edu.depaul.cdm.se.matador.model.dto.LessonResponse;
+import edu.depaul.cdm.se.matador.model.client.LessonRequest;
+import edu.depaul.cdm.se.matador.model.client.LessonResponse;
 import edu.depaul.cdm.se.matador.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,19 +23,32 @@ public class LessonRestApi {
     @Autowired
     private LessonService lessonService;
 
+    @PostMapping("/lessons")
+    public ResponseEntity<LessonResponse> createUser(
+            @RequestHeader("memberId") Long memberId,
+            @RequestBody LessonRequest lessonRequest) {
+
+        Lesson createdLesson = this.lessonService.create(memberId, lessonRequest);
+        LessonResponse response = new LessonResponse(createdLesson);
+
+// TODO: fix this
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+    }
+
 
     @GetMapping("/lessons")
-    public ResponseEntity<List<Lesson>> getAll(@RequestParam("instructorId") Long instructorId) {
+    public ResponseEntity<List<LessonResponse>> getAll(@RequestParam("instructorId") Long instructorId) {
         List<Lesson> lessons = this.lessonService.findByInstructorId(instructorId);
 
-        List<Lesson> response = lessons.stream()
+        List<LessonResponse> response = lessons.stream()
                 .map(lesson -> {
                     //lesson.setInstructor(null);
-                    return lesson;
+                    return new LessonResponse(lesson);
                 })
                 .collect(Collectors.toList());
 
-        return new ResponseEntity<>(lessons, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
     @GetMapping("/lessons/{memberId}")

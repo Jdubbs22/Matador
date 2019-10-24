@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.matador.model.dto;
+package edu.depaul.cdm.se.matador.model.client;
 
 import edu.depaul.cdm.se.matador.model.Role;
 import edu.depaul.cdm.se.matador.model.Member;

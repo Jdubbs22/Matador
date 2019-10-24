@@ -16,7 +16,7 @@ public class MemberRoleDao {
     @Transactional
     public int addRole(Long userId, String role) {
         String value = String.format("(%s, '%s')",userId, role);
-        Query query = this.manager.createNativeQuery("insert into user_role(user_id, role) values " + value);
+        Query query = this.manager.createNativeQuery("insert into member_role(member_id, role) values " + value);
         query.setFlushMode(FlushModeType.COMMIT);
         // TODO: how to force this transaction to commit before returning 
         return query.executeUpdate();

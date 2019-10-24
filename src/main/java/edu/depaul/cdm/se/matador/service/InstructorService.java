@@ -2,7 +2,7 @@ package edu.depaul.cdm.se.matador.service;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.model.dto.InstructorResponse;
+import edu.depaul.cdm.se.matador.model.client.InstructorResponse;
 
 import java.util.List;
 import java.util.Optional;

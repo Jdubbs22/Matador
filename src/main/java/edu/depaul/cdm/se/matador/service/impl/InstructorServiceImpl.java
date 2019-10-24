@@ -2,7 +2,7 @@ package edu.depaul.cdm.se.matador.service.impl;
 
 import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Member;
-import edu.depaul.cdm.se.matador.model.dto.InstructorResponse;
+import edu.depaul.cdm.se.matador.model.client.InstructorResponse;
 import edu.depaul.cdm.se.matador.service.InstructorService;
 import edu.depaul.cdm.se.matador.service.repository.InstructorRepository;
 import org.springframework.stereotype.Service;
