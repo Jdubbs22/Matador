@@ -14,8 +14,8 @@ public class MemberRoleDao {
     private EntityManager manager;
 
     @Transactional
-    public int addRole(Long userId, String role) {
-        String value = String.format("(%s, '%s')",userId, role);
+    public int addRole(Long memberId, String role) {
+        String value = String.format("(%s, '%s')",memberId, role);
         Query query = this.manager.createNativeQuery("insert into member_role(member_id, role) values " + value);
         query.setFlushMode(FlushModeType.COMMIT);
         // TODO: how to force this transaction to commit before returning 

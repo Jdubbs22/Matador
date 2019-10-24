@@ -36,6 +36,11 @@ public class LessonServiceImpl implements LessonService {
         return Optional.empty();
     }
 
+    @Override
+    public Lesson findByLessonID(Long lessonID) {
+        return null;
+    }
+
     //todo: fix createLesson
     // TODO: verify that startTime and endTime in lessonRequest is legal
     @Override

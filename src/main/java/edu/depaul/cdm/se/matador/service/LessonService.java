@@ -10,7 +10,7 @@ public interface LessonService {
     List<Lesson> findByInstructorId(Long instructorId);
     List<Lesson> findByMemberId(Long memberId);
     Optional<Lesson> OptfindByMemberId(Long memberId);
-
+    Lesson findByLessonID(Long lessonID);
     //Lesson create(Lesson lesson);
     Lesson create(Long memberId, LessonRequest request);
 }
