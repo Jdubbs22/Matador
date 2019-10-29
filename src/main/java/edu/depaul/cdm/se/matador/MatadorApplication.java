@@ -15,6 +15,7 @@ public class MatadorApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MatadorApplication.class, args);
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	}
 
 	@Override

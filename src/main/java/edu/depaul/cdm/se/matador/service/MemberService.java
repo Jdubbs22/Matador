@@ -5,7 +5,7 @@ import edu.depaul.cdm.se.matador.model.Member;
 import java.util.Optional;
 
 
-// all functions  names must change
+
 public interface MemberService {
     /**
      * Create new User

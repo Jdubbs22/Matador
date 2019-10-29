@@ -27,7 +27,7 @@ public class Lesson implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;  
    //private Long memberId;
   //  private Long instructorId;
 

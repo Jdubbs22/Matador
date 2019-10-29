@@ -14,9 +14,9 @@ public class LessonMemberDao {
     private EntityManager manager;
 
     @Transactional
-    public int addMemberIdToLessonID( Long lessonID,Long membersID){
-        String value = String.format("(%s, '%s')", lessonID,membersID);
-        Query query = this.manager.createNativeQuery("insert int lesson_members(lessonId,membersId) values"+value);
+    public int addMemberIdToLessonID( Long lesson_id,Long members_id){
+        String value = String.format("(%s, '%s')", lesson_id,members_id);
+        Query query = this.manager.createNativeQuery("insert into lesson_members(lesson_id,members_id) values "+value);
         query.setFlushMode(FlushModeType.COMMIT);
 
         return query.executeUpdate();

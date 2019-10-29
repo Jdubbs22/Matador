@@ -40,8 +40,9 @@ public class LessonMemberServiceImpl implements LessonMemberService {
                     String.format("The lesson ID %s doesn't exist", lessonID));
         }//end if
 
-        int updated = this.lessonMemberDao.addMemberIdToLessonID(membersID,lessonID);
-        return updated;
+       // int updated =
+                return this.lessonMemberDao.addMemberIdToLessonID(membersID,lessonID);
+     //   return updated;
     }//end method
 
 
