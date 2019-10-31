@@ -3,11 +3,16 @@ package edu.depaul.cdm.se.matador.model.client;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.depaul.cdm.se.matador.model.Instructor;
 import edu.depaul.cdm.se.matador.model.Lesson;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+
+@Getter  //do I need these ?
+@Setter
 public class LessonResponse {
 
     private  Long id;

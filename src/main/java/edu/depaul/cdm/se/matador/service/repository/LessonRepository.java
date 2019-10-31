@@ -18,7 +18,7 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
     @Query("select s from Lesson s where s.instructor.instructorId = :instructorId")
     List<Lesson> findByInstructorId(@Param("instructorId") Long instructorId);
 
-    @Query("select s from Lesson s where s.id =: lessonId")
+    @Query("select s from Lesson s where s.id = :lessonId")
     Lesson findByLessonID(@Param("lessonId") Long lessonID);
 
 //    @Query(name = "select s from Lesson s where s.instructor.instructorId = :instructorId",

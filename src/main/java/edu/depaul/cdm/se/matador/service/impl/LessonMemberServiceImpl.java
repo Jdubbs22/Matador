@@ -20,7 +20,8 @@ public class LessonMemberServiceImpl implements LessonMemberService {
 
 
     public LessonMemberServiceImpl(LessonMemberDao lessonMemberDao,
-                                   LessonRepository lessonRepository, MemberRepository memberRepository) {
+                                   LessonRepository lessonRepository,
+                                   MemberRepository memberRepository) {
         this.lessonMemberDao = lessonMemberDao;
         this.lessonRepository = lessonRepository;
         this.memberRepository = memberRepository;
@@ -28,6 +29,7 @@ public class LessonMemberServiceImpl implements LessonMemberService {
 
     @Override
     public int addMemberIdToLessonID(Long lessonID, Long membersID) {
+  //      System.out.println("test to see if addMemberIdToLessonId is called");
        Optional<Member> memberOptional = this.memberRepository.findById(membersID);
         if (!memberOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
@@ -40,9 +42,8 @@ public class LessonMemberServiceImpl implements LessonMemberService {
                     String.format("The lesson ID %s doesn't exist", lessonID));
         }//end if
 
-       // int updated =
-                return this.lessonMemberDao.addMemberIdToLessonID(membersID,lessonID);
-     //   return updated;
+        int updated = this.lessonMemberDao.addMemberIdToLessonID(membersID,lessonID);
+        return updated;
     }//end method
 
 

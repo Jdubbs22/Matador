@@ -37,8 +37,11 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public Lesson findByLessonID(Long lessonID) {
-        return null;
+    public Lesson findByLessonID(Long lessonID) {  //todo: did I fix this correctly???
+        System.out.println("test to see if findByLessonId is called =============================================");
+        Lesson lesson = lessonRepository.findByLessonID(lessonID);
+        System.out.println("test to see if this prints below lessonRepository");
+        return lesson;
     }
 
     //todo: fix createLesson
