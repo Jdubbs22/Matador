@@ -33,47 +33,64 @@ public class LessonMemberApi {
     public LessonMemberApi(LessonMemberService lessonMemberService,
                            LessonMemberDao lessonMemberDao,
                            LessonMemberServiceImpl lessonMemberServiceimp,
-                            LessonService lessonService) {
+                           LessonService lessonService) {
         this.lessonMemberService = lessonMemberService;
         this.lessonMemberDao = lessonMemberDao;
         this.lessonMemberServiceimp = lessonMemberServiceimp;
         this.lessonService = lessonService;
     }//end constructor
 
-    @PostMapping("/lessonMember/{lessonID}")  //, memberID}")//was put
+    @PostMapping("/lessonMember/{lessonID}/{memberID}")//was put
     public ResponseEntity<LessonResponse> addMemberToLesson(@PathVariable("lessonID") Long lessonID,
-                                                          //  @PathVariable("memberID") Long memberId,
+                                                            @PathVariable("memberID") Long memberId,
                                                             @RequestBody LessonRequest request) //remove bracket to impliment below
-                                                          //  ,@PathVariable("lessonID, memberID") Long lessonID,Long memberId)
+    //  ,@PathVariable("lessonID, memberID") Long lessonID,Long memberId)
     {
-
-      //  LessonMemberDao lesson = this.lessonMemberDao.addMemberIdToLessonID(memberId,lessonID) ;
-
-
+        //  LessonMemberDao lesson = this.lessonMemberDao.addMemberIdToLessonID(memberId,lessonID) ;
         Lesson lesson = this.lessonService.findByLessonID(lessonID);    //lessonID);
+        Optional<Member> member = this.memberService.findUserById(memberId);//   memberId);
 
-
-      Optional<Member> member = this.memberService.findUserById(2L);//   memberId);
-
-      if(lesson != null && member.isPresent()){
-        //    MemberResponse memberResponse = new MemberResponse(member);
-
-        //    System.out.println("check to see if addMememberToLesson works");
-            lessonMemberServiceimp.addMemberIdToLessonID(lessonID
-                    , 2L);
+        if (lesson != null && member.isPresent()) {
+            //    MemberResponse memberResponse = new MemberResponse(member);
+            //    System.out.println("check to see if addMememberToLesson works");
+            lessonMemberServiceimp.addMemberIdToLessonID(lessonID, memberId);
             LessonResponse lessonResponse = new LessonResponse(lesson);
             return new ResponseEntity<>(lessonResponse, HttpStatus.ACCEPTED);
-
         }//end if
         else {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "NO lesson for Id: ");  //lessonID);
-            // return ResponseEntity.notFound().build();
-        }
-      //  return null;
-    }
+                    HttpStatus.BAD_REQUEST, "NO lesson for Id: " + lessonID);  //lessonID);
+
+        }//end else
+
+    }//end method
+
+    @PostMapping("/removeMember/{lessonID}/{memberID}")//was put
+    public ResponseEntity<LessonResponse> removeMemberFromLesson(@PathVariable("lessonID") Long lessonID,
+                                                            @PathVariable("memberID") Long memberId,
+                                                            @RequestBody LessonRequest request) //remove bracket to impliment below
+    //  ,@PathVariable("lessonID, memberID") Long lessonID,Long memberId)
+    {
+        //  LessonMemberDao lesson = this.lessonMemberDao.addMemberIdToLessonID(memberId,lessonID) ;
+        Lesson lesson = this.lessonService.findByLessonID(lessonID);    //lessonID);
+        Optional<Member> member = this.memberService.findUserById(memberId);//   memberId);
+
+        if (lesson != null && member.isPresent()) {
+            //    MemberResponse memberResponse = new MemberResponse(member);
+            //    System.out.println("check to see if addMememberToLesson works");
+            lessonMemberServiceimp.addMemberIdToLessonID(lessonID, memberId);
+            LessonResponse lessonResponse = new LessonResponse(lesson);
+            return new ResponseEntity<>(lessonResponse, HttpStatus.ACCEPTED);
+        }//end if
+        else {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "NO lesson for Id: " + lessonID);  //lessonID);
+
+        }//end else
+
+    }//end method
 }//end class
-        // can I use this???
+// can I use this???
 //    @GetMapping("/assignMember")
 //    public HttpEntity<?> assignMember(@RequestParam("sessionId") Long sessionId,
 //                                      @RequestParam("memberId") Long memberId) {

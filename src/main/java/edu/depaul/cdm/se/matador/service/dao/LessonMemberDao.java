@@ -23,5 +23,13 @@ public class LessonMemberDao {
     }//end method
 
 
+    //todo: fix this query
+    @Transactional
+    public int removeMemberIdFromLessonId( Long lesson_id, Long members_id){
+        String value = String.format("(%s, '%s')",lesson_id,members_id);
+        Query query = this.manager.createNativeQuery("DELETE " +members_id+" FROM lesson_members WHERE lesson_id = "+ members_id+";");
+        query.setFlushMode(FlushModeType.COMMIT);
+        return query.executeUpdate();
+    }
 
 }//end class

@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Getter @Setter
-
+//@Table(name = "tb_member")
 public class Member {
 
 // For Jpa
