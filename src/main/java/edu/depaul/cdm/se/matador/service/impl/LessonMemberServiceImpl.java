@@ -47,20 +47,20 @@ public class LessonMemberServiceImpl implements LessonMemberService {
     }//end method
 
     @Override
-    public int removeMemberIdFromLessonId(Long lessonId, Long memberId) {
+    public int removeMemberIdFromLessonId( Long memberId) {
         Optional<Member> memberOptional = this.memberRepository.findById(memberId);
         if (!memberOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     String.format("The member ID %s doesn't exist", (memberId)));
         }//end if
 
-        Optional<Lesson> lessonOptional = this.lessonRepository.findById(lessonId);
-        if (!lessonOptional.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    String.format("The lesson ID %s doesn't exist", lessonId));
-        }//end if
+//        Optional<Lesson> lessonOptional = this.lessonRepository.findById(lessonId);
+//        if (!lessonOptional.isPresent()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+//                    String.format("The lesson ID %s doesn't exist", lessonId));
+//        }//end if
 
-        int updated = this.lessonMemberDao.removeMemberIdFromLessonId(memberId,lessonId);
+        int updated = this.lessonMemberDao.removeMemberIdFromLessonId(memberId);
         return updated;
     }
 

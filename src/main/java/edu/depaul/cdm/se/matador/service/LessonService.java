@@ -12,5 +12,5 @@ public interface LessonService {
     Optional<Lesson> OptfindByMemberId(Long memberId);
     Lesson findByLessonID(Long lessonID);
     //Lesson create(Lesson lesson);
-    Lesson create(Long memberId, LessonRequest request);
+    Lesson create(Long memberId, LessonRequest request) throws Exception;
 }

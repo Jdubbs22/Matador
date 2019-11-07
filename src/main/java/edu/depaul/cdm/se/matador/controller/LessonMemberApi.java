@@ -65,26 +65,26 @@ public class LessonMemberApi {
 
     }//end method
 
-    @PostMapping("/removeMember/{lessonID}/{memberID}")//was put
-    public ResponseEntity<LessonResponse> removeMemberFromLesson(@PathVariable("lessonID") Long lessonID,
-                                                            @PathVariable("memberID") Long memberId,
+    @PostMapping("/removeMember/{memberID}")//was put
+    public ResponseEntity<LessonResponse> removeMemberFromLesson(//@PathVariable("lessonID") Long lessonID,
+                                                           @PathVariable("memberID") Long memberId,
                                                             @RequestBody LessonRequest request) //remove bracket to impliment below
     //  ,@PathVariable("lessonID, memberID") Long lessonID,Long memberId)
     {
         //  LessonMemberDao lesson = this.lessonMemberDao.addMemberIdToLessonID(memberId,lessonID) ;
-        Lesson lesson = this.lessonService.findByLessonID(lessonID);    //lessonID);
-        Optional<Member> member = this.memberService.findUserById(memberId);//   memberId);
+     //   Lesson lesson = this.lessonService.findByLessonID(lessonID);    //lessonID);
+      Optional<Member> member = this.memberService.findUserById(memberId);//   memberId);
 
-        if (lesson != null && member.isPresent()) {
+        if ( member.isPresent()) {
             //    MemberResponse memberResponse = new MemberResponse(member);
             //    System.out.println("check to see if addMememberToLesson works");
-            lessonMemberServiceimp.addMemberIdToLessonID(lessonID, memberId);
-            LessonResponse lessonResponse = new LessonResponse(lesson);
-            return new ResponseEntity<>(lessonResponse, HttpStatus.ACCEPTED);
+            lessonMemberServiceimp.removeMemberIdFromLessonId(memberId);
+         //   LessonResponse lessonResponse = new LessonResponse(lesson);
+            return new ResponseEntity<>( HttpStatus.ACCEPTED);
         }//end if
         else {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "NO lesson for Id: " + lessonID);  //lessonID);
+                    HttpStatus.BAD_REQUEST, "NO lesson for Id: " );  //lessonID);
 
         }//end else
 

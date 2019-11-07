@@ -19,14 +19,14 @@ public class LessonRestApi {
 
 
 
-    // TODO: create lesson service, inject here
+    //TODO: is this exception/check for lesson time sufficient?
     @Autowired
     private LessonService lessonService;
 
     @PostMapping("/lessons")
     public ResponseEntity<LessonResponse> createUser(
             @RequestHeader("memberId") Long memberId,
-            @RequestBody LessonRequest lessonRequest) {
+            @RequestBody LessonRequest lessonRequest) throws Exception {
 
         Lesson createdLesson = this.lessonService.create(memberId, lessonRequest);
         LessonResponse response = new LessonResponse(createdLesson);
