@@ -23,7 +23,7 @@ public class LessonRestApi {
     @Autowired
     private LessonService lessonService;
 
-    @PostMapping("/lessons")
+    @PostMapping("/lessons")  //creates lesson
     public ResponseEntity<LessonResponse> createUser(
             @RequestHeader("memberId") Long memberId,
             @RequestBody LessonRequest lessonRequest) throws Exception {

@@ -20,6 +20,8 @@ public class LessonServiceImpl implements LessonService {
     LessonRepository lessonRepository;
     @Autowired
     InstructorService instructorService;
+    @Autowired
+    LessonTime lessonTime;
     @Override
     public List<Lesson> findByInstructorId(Long instructorId) {
        List<Lesson> lessons= lessonRepository.findByInstructorId(instructorId);
@@ -60,8 +62,8 @@ public class LessonServiceImpl implements LessonService {
         lesson.setStatus("OPEN");
 
         LessonTime.checkIfStartTimeIsFirst(lesson.getStartTime(),lesson.getEndTime());
-        LessonTime lessonTime = new LessonTime();
-        lessonTime.checkOverlapBetweenLessons(lesson.getEndTime(),lesson.getStartTime());
+      //  LessonTime lessonTime = new LessonTime();
+        lessonTime.checkOverlapBetweenLessons(lesson.getEndTime(),lesson.getStartTime(),lesson.getInstructor());
 
         // persist into DB -> go via LessonRepository
         return lessonRepository.save(lesson);
