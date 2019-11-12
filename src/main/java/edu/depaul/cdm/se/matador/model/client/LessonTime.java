@@ -30,17 +30,11 @@ public class LessonTime {
         }
     }//end method
 
-//TODO: why is the entity manager null?
+
  // @Transactional      //do I need this???
 public void checkOverlapBetweenLessons(Date endLessonTime, Date startLessonTime, Instructor instructor) throws Exception {
-//    this.endLessonTime = endLessonTime;  //not sure if this is needed
-//    this.startLessonTime = startLessonTime;
-//    this.id = id;
-    //^^^above was static but changed for the this. below
-  //  Query duplicateQuery = this.manager.createNativeQuery()
 
     DateFormat formater = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
-
 
     String startStr = String.format("'%s'", formater.format(startLessonTime));
     String endStr = String.format("'%s'", formater.format(endLessonTime));
@@ -54,20 +48,6 @@ public void checkOverlapBetweenLessons(Date endLessonTime, Date startLessonTime,
             " start_time >= " + startStr + " and end_time <= "+ endStr +
 
             " and instructor_id = "+ instructor.getInstructorId() );
-
-
-//    Query query = manager.createNativeQuery("select *" +  //).createNativeQuery  //was this.manager
-//            " from lesson " +
-//            "where start_time >= " + startStr + " and end_time <= "+ startStr +
-//            " or " +
-//            " start_time >= " + startStr + " and end_time <= "+ startStr +
-//            " and instructor_id = "+ instructor.getInstructorId() );
-
-
-//    Query query = manager.createQuery("select s" +  //).createNativeQuery  //was this.manager
-//            " from Lesson s " +
-//            "where start_time >= " + startStr + " and end_time <= "+ endStr +
-//            " and instructor_id = "+ instructor.getInstructorId());
 
     List result = query.getResultList();
 

@@ -5,10 +5,12 @@ import edu.depaul.cdm.se.matador.model.client.LessonRequest;
 import edu.depaul.cdm.se.matador.model.client.LessonResponse;
 import edu.depaul.cdm.se.matador.service.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -62,6 +64,20 @@ public class LessonRestApi {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/instructorLessions/{instructorId}")
+    public HttpEntity<?> findByInstructorId(@PathVariable  ("instructorId") Long instId){
+        List<Lesson> sessionList=this.lessonService.findByInstructorId(instId);
+        return new ResponseEntity<>(sessionList,HttpStatus.OK);
+    }
+
+    @GetMapping("/instructorLessions/{instructorId}/{startDate}/{endDate}")
+    public HttpEntity<?>findLessonsBetweenDates(@PathVariable ("instructorId") Long instrId,
+                                                @PathVariable("startDate") Date startD,
+                                                @PathVariable("endDate") Date endD){
+     //   List<Lesson> sessionsList = this.lessonService.findByInstructorIdBetweendates(instrId,startD,endD);
+       return  null;
+    }
+
 //    @PostMapping("")
 //    public HttpEntity<?> createSession(@RequestBody Session session) {
 //        return new ResponseEntity<>(this.sessionRepo.save(session), HttpStatus.OK);
@@ -74,11 +90,7 @@ public class LessonRestApi {
 //        return new ResponseEntity<>(sessionList, HttpStatus.OK);
 //    }
 //
-//    @GetMapping("/instructorSession")
-//       public  HttpEntity<?> findByInstructorId(){
-//        List<Session> sessionList=this.sessionService.findByInstructorId();
-//        return new ResponseEntity<>(sessionList,HttpStatus.OK);
-//    }
+
 //
 //
 //    @GetMapping("/memberSession")  // this is not working...why?
