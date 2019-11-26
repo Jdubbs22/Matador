@@ -3,15 +3,20 @@ package edu.depaul.cdm.se.matador.controller;
 import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.model.client.MemberResponse;
 import edu.depaul.cdm.se.matador.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1")
 public class MemberApi {
+
+    @Autowired
+    RestTemplate restTemplate;
 
     private MemberService memberService;
 

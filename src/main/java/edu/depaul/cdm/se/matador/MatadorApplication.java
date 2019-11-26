@@ -6,9 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class MatadorApplication implements CommandLineRunner {
+
+	@Autowired
+	RestTemplate restTemplate;
+
 
 	@Autowired
 	private RoleService roleService;
@@ -16,7 +22,12 @@ public class MatadorApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(MatadorApplication.class, args);
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-	}
+	}//end main
+
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}//todo: is this the correct format?
 
 	@Override
 	public void run(String... args)  {
@@ -40,5 +51,5 @@ public class MatadorApplication implements CommandLineRunner {
 		role.setPriority(4L);
 		this.roleService.createRole(role);
 
-	}
+	}//end run
 }

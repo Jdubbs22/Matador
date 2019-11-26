@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
 import java.util.Date;
@@ -20,7 +21,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/v1")
 public class LessonRestApi {
 
-
+    @Autowired
+    RestTemplate restTemplate;
 
     //TODO: is this exception/check for lesson time sufficient?
     @Autowired

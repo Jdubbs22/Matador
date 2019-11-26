@@ -4,14 +4,20 @@ import edu.depaul.cdm.se.matador.model.Member;
 import edu.depaul.cdm.se.matador.model.client.MemberResponse;
 import edu.depaul.cdm.se.matador.model.client.RoleRequest;
 import edu.depaul.cdm.se.matador.service.MemberRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/v1")
 public class MemberRoleApi {
+
+
+    @Autowired
+    RestTemplate restTemplate;
 
     private MemberRoleService memberRoleService;
 
