@@ -78,7 +78,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public List<Lesson> findByInstructorIdBetweendates(Instructor instructorId, Date startDate, Date endDate) {
+    public List<Lesson> findByInstructorIdBetweendates(Long instructorId, Date startDate, Date endDate) {
        DateFormat formater = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
         String startStr = String.format("'%s'", formater.format(startDate));
         String endStr = String.format("'%s'", formater.format(endDate));
@@ -87,7 +87,7 @@ public class LessonServiceImpl implements LessonService {
                         " from lesson "+
                         " where start_time >= "+ startStr+
                         " and end_time <= "+endStr+
-                        "and instructor_id = "+ instructorId.getInstructorId()
+                        "and instructor_id = "+ instructorId
         );
         List result = query.getResultList();
         return result;

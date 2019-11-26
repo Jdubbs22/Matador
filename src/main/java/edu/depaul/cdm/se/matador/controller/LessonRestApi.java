@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public class LessonRestApi {
 // TODO: fix this
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 
-    }
+    }//end /lessons post
 
 
     @GetMapping("/lessons")
@@ -52,7 +53,7 @@ public class LessonRestApi {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
 
-    }
+    }//end /lessons get
     @GetMapping("/lessons/{memberId}")
     public ResponseEntity<LessonResponse> findLessonByMemberId(@PathVariable("memberId")Long memberId){
         Optional<Lesson> lessonOption = this.lessonService.OptfindByMemberId(memberId);
@@ -62,21 +63,24 @@ public class LessonRestApi {
             return ResponseEntity.ok(response);
         }
         return ResponseEntity.notFound().build();
-    }
+    }//end get lessons/memberId
 
-    @GetMapping("/instructorLessions/{instructorId}")
+    @GetMapping("/instructorLessons/{instructorId}")
     public HttpEntity<?> findByInstructorId(@PathVariable  ("instructorId") Long instId){
         List<Lesson> sessionList=this.lessonService.findByInstructorId(instId);
         return new ResponseEntity<>(sessionList,HttpStatus.OK);
-    }
+    }//end get instructorLesons/instrId
 
-    @GetMapping("/instructorLessions/{instructorId}/{startDate}/{endDate}")
-    public HttpEntity<?>findLessonsBetweenDates(@PathVariable ("instructorId") Long instrId,
-                                                @PathVariable("startDate") Date startD,
-                                                @PathVariable("endDate") Date endD){
-     //   List<Lesson> sessionsList = this.lessonService.findByInstructorIdBetweendates(instrId,startD,endD);
-       return  null;
-    }
+    @GetMapping("/lessonsBetween")
+    public HttpEntity<?> findLessonsBetweenTimeStampt(@RequestParam ("instructorId") Long instrId,
+                                                @RequestParam("from") Long from,
+                                                @RequestParam("to") Long to){
+
+        Date startD = Date.from(Instant.ofEpochSecond(from));
+        Date endD = Date.from(Instant.ofEpochSecond(to));
+        List<Lesson> sessionsList = this.lessonService.findByInstructorIdBetweendates(instrId,startD,endD);
+        return new ResponseEntity<>(sessionsList,HttpStatus.OK);
+    }//end get /lessonsbetween
 
 //    @PostMapping("")
 //    public HttpEntity<?> createSession(@RequestBody Session session) {

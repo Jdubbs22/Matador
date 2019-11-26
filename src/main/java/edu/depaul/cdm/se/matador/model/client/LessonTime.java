@@ -38,16 +38,16 @@ public void checkOverlapBetweenLessons(Date endLessonTime, Date startLessonTime,
 
     String startStr = String.format("'%s'", formater.format(startLessonTime));
     String endStr = String.format("'%s'", formater.format(endLessonTime));
-
+    String instructorQuery = " and instructor_id=" + instructor.getInstructorId().toString();
     Query query = manager.createNativeQuery("select *" +  //).createNativeQuery  //was this.manager
             " from lesson " +
-            "where start_time <= " + startStr + " and end_time >= "+ startStr +
+            "where ((start_time<=" + startStr + " and end_time>="+ startStr + ")" +
             " or " +
-            " start_time <= " + endStr + " and end_time >= "+ endStr +
+            " (start_time <= " + endStr + " and end_time >= "+ endStr + ")" +
             " or " +
-            " start_time >= " + startStr + " and end_time <= "+ endStr +
+            " (start_time >= " + startStr + " and end_time <= "+ endStr + "))" +
 
-            " and instructor_id = "+ instructor.getInstructorId() );
+            " and instructor_id = "+ instructor.getInstructorId().toString());
 
     List result = query.getResultList();
 
