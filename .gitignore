@@ -3,7 +3,12 @@
 mvnw
 mvnw.cmd
 
+.classpath
+.project
+
 .zip
 .idea/
+bin/
+
 
 /src/main/resources/application-vtran.properties
