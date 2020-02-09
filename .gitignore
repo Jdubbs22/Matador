@@ -9,6 +9,7 @@ mvnw.cmd
 .zip
 .idea/
 bin/
-
+.settings/
+matador.iml
 
 /src/main/resources/application-vtran.properties
