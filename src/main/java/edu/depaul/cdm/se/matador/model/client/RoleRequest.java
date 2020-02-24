@@ -1,4 +1,4 @@
-package edu.depaul.cdm.se.matador.model.dto;
+package edu.depaul.cdm.se.matador.model.client;
 
 
 public class RoleRequest {

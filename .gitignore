@@ -13,3 +13,9 @@ bin/
 matador.iml
 
 /src/main/resources/application-vtran.properties
+
+.classpath
+.project
+.settings/
+bin/
+matador.iml

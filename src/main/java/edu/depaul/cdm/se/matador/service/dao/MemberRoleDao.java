@@ -5,19 +5,30 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.FlushModeType;
 import javax.persistence.Query;
 
 @Component
-public class UserRoleDao {
+public class MemberRoleDao {
     @Autowired
     private EntityManager manager;
 
     @Transactional
-    public int addRole(Long userId, String role) {
-        String value = String.format("(%s, '%s')",userId, role);
-        Query query = this.manager.createNativeQuery("insert into user_role(user_id, role) values " + value);
+    public int addRole(Long memberId, String role) {
+        String value = String.format("(%s, '%s')",memberId, role);
+        Query query = this.manager.createNativeQuery("insert into member_role(member_id, role) values " + value);
+        query.setFlushMode(FlushModeType.COMMIT);
+        // TODO: how to force this transaction to commit before returning 
         return query.executeUpdate();
+//        if(role== "INSTRUCTOR"){  //this doesn't work, just trying stuff to understand
+//
+//            Query query2 = this.manager.createNativeQuery("insert into instructor(instructor_id, member_id) value(1, 1)");
+//
+//            query.setFlushMode(FlushModeType.COMMIT);
+//        }
     }
+
+
 }
 
 /*
