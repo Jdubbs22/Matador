@@ -29,7 +29,7 @@ public class Instructor implements Serializable{
     private String imageUrl;
 //    private  String first_name;
 //    private String last_name;
-//test to see if new branch added
+//test to see if new branch added (if in github)
 
     @Column(columnDefinition = "TEXT")
     private String description;
